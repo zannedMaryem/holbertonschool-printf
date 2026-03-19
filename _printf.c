@@ -1,0 +1,51 @@
+#include "main.h"
+#include <stdarg.h>
+#include <string.h>
+#include <unistd.h>
+/**
+ * _printf - function that produces output according to a format.
+ * @format: The format string is composed of zero or more directives.
+ *
+ * Return: the number of characters printed.
+ */
+int _printf(const char *format, ...)
+{
+	int i = 0, index = 0;
+	va_list argument;
+	char c;
+	char *string;
+
+	va_start(argument, format);
+	while (format[i] != '\0')
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			if (format[i] == 's')
+			{
+				string = va_arg(argument, char *);
+				write(1, string, strlen(string));
+				index += strlen(string);
+			}
+			else if (format[i] == 'c')
+			{
+				c = (char)va_arg(argument, int);
+				write(1, &c, 1);
+				index++;
+			}
+			else if (format[i] == '%')
+			{
+				write(1, "%", 1);
+				index++;
+			}
+		}
+		else
+		{
+			write(1, &format[i], strlen(format));
+			index++;
+		}
+		i++;
+	}
+	va_end(argument);
+	return (index);
+}
