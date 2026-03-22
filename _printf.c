@@ -21,6 +21,11 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '\0')
+			{
+				va_end(argument);
+				return (-1);
+			}
 			if (format[i] == 's')
 			{
 				string = va_arg(argument, char *);
