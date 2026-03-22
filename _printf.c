@@ -24,8 +24,16 @@ int _printf(const char *format, ...)
 			if (format[i] == 's')
 			{
 				string = va_arg(argument, char *);
-				write(1, string, strlen(string));
-				index += strlen(string);
+				if (string == NULL)
+				{
+					write(1, "(null)", 6);
+					index += 6;
+				}
+				else
+				{
+					write(1, string, strlen(string));
+					index += strlen(string);
+				}
 			}
 			else if (format[i] == 'c')
 			{
