@@ -11,7 +11,7 @@ int int_to_char(int n)
 	char tab[12];
 	int i = 0;
 	unsigned int num;
-	int length;
+	int length = 0;
 
 	if (n < 0)
 	{
@@ -33,5 +33,5 @@ int int_to_char(int n)
 		write(1, &tab[i], 1);
 		length++;
 	}
-	return(length);
+	return (length);
 }
