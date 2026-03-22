@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 	va_list argument;
 	char c;
 	char *string;
+	int number, length_number;
 
 	va_start(argument, format);
 	while (format[i] != '\0')
@@ -45,6 +46,12 @@ int _printf(const char *format, ...)
 				c = (char)va_arg(argument, int);
 				write(1, &c, 1);
 				index++;
+			}
+			else if (format[i] == 'i' || 'd')
+			{
+				number = va_arg(argument, int);
+				length_number = int_to_char(number);
+				index += length_number;
 			}
 			else if (format[i] == '%')
 			{

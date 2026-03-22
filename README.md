@@ -31,4 +31,4 @@ _printf("Number: %d\n", 42);
 
 - `main.h` - Header file with function prototypes
 - `_printf.c` - Main printf implementation
-- `id_spec.c` - Format specifier handler
+- `int_to_char.c` - Handler for 'i' and 'd' specifiers
