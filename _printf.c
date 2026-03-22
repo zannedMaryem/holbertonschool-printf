@@ -51,6 +51,12 @@ int _printf(const char *format, ...)
 				write(1, "%", 1);
 				index++;
 			}
+			else
+			{
+				write(1, "%", 1);
+				write(1, &format[i], 1);
+				index += 2;
+			}
 		}
 		else
 		{
