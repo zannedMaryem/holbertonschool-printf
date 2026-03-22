@@ -1,0 +1,64 @@
+.TH _PRINTF 3 "March 2026"
+              "Holberton School"
+              "Library Functions Manual"
+                  .SH NAME
+                      _printf \-
+    produce output according to a format
+
+        .SH SYNOPSIS
+        .nf
+#include "main.h"
+
+    int _printf(const char *format, ...);
+.fi
+
+.SH DESCRIPTION
+The _printf() function writes output to the standard output stream
+according to a format string. The format string is composed of zero or
+more characters and conversion specifiers.
+
+Characters are written as-is, except that conversion specifiers
+introduced by '%' are replaced with values from the variable argument list.
+
+Supported conversion specifiers:
+.TP
+.B %c
+Prints a single character.
+.TP
+.B %s
+Prints a string of characters. If the argument is NULL, the string "(null)" is printed.
+.TP
+.B %d, %i
+Prints a signed decimal integer.
+.TP
+.B %%
+Prints a literal '%' character.
+.TP
+Unknown specifiers
+If an unknown specifier is encountered, _printf prints the '%' character
+followed by the specifier character literally.
+
+.SH RETURN VALUE
+The _printf() function returns the total number of characters printed
+(excluding the terminating null byte used to end output to strings).
+If an incomplete format specifier is encountered (for example, a single
+'%' at the end of the format string), the function returns -1.
+
+.SH EXAMPLES
+.nf
+_printf("Hello, %s!\n", "world");
+Prints : Hello, world !
+
+         _printf("Number: %d\n", 42);
+Prints : Number : 42
+
+         _printf("Percent sign: %%\n");
+Prints : Percent sign : %
+                            .fi
+
+                            .SH SEE ALSO
+                                printf(3)
+
+                            .SH AUTHOR
+                            Maryem Zanned,
+    Holberton School
